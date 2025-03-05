@@ -5,7 +5,19 @@ import { data } from "../data/data";
 // Return example: 'Planet Name'
 
 export function findPlanetNameByMoon(data, moonName) {
-  // Your code goes here...
+  
+  const planetNames = data.planets.filter(function(planet) {
+    if (!planet.moons) return false;
+
+    return planet.moons.filter(function(moon) {
+      return moon === moonName;
+    }).length > 0;
+  }).map(function(planet) {
+    return planet.name;
+  });
+
+  return planetNames[0];
+
 }
 
 
